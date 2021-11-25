@@ -1,8 +1,4 @@
-const title = "Name";
-let screens = " Wide";
-let screeenPrice = 10;
-let rollback = 20;
-let fullPrice = 30;
-let adaptive = 320;
+let title, screens, screeenPrice, rollback, fullPrice, adaptive; // в столбик форматер не позволяет
+
 alert("Привет всем!!!");
 console.log("Привет , это консоль из lesson01!");
