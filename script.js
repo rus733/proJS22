@@ -9,13 +9,9 @@ console.log(typeof title);
 console.log(typeof fullPrice);
 console.log(typeof adaptive);
 console.log("строка имеет длину, равную " + screens.length + " символ");
-console.log(
-  "Стоимость верстки экранов " +
-    screeenPrice +
-    " юаней \nСтоимость разработки сайта " +
-    fullPrice +
-    " юаней"
-);
+
+console.log(`Стоимость верстки экранов ${screeenPrice} юаней
+Стоимость разработки сайта ${fullPrice} юаней`);
 
 console.log(screens.toLowerCase().split(", "));
 
