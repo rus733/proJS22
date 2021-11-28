@@ -16,6 +16,3 @@ console.log(`Стоимость верстки экранов ${screeenPrice} ю
 console.log(screens.toLowerCase().split(", "));
 
 console.log(fullPrice * (rollback / 100));
-
-//alert("Привет всем!!!");
-//console.log("Привет , это консоль из lesson02!");
