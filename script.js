@@ -13,6 +13,6 @@ console.log("строка имеет длину, равную " + screens.length
 console.log(`Стоимость верстки экранов ${screeenPrice} юаней
 Стоимость разработки сайта ${fullPrice} юаней`);
 
-console.log(screens.toLowerCase().split(", "));
+console.log(screens.toLowerCase().split(", ")); // перевели строку в нижний регистр и разделили в массив
 
-console.log(fullPrice * (rollback / 100));
+console.log(fullPrice * (rollback / 100)); // комиссия посреднику
