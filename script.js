@@ -1,16 +1,14 @@
 "use strict";
 
-let title = prompt("Как называется ваш проект?");
-let screens = prompt("Какие типы экранов нужно разработать?");
-let screeenPrice = +prompt("Сколько будет стоить данная работа?");
-let adaptive = prompt("Нужен ли адаптив на сайте?");
+const title = prompt("Как называется ваш проект?");
+const screens = prompt("Какие типы экранов нужно разработать?");
+const screeenPrice = +prompt("Сколько будет стоить данная работа?");
+const adaptive = confirm("Нужен ли адаптив на сайте?");
 
-adaptive === "да" ? (adaptive = true) : (adaptive = false);
-
-let service1 = prompt("Какой дополнительный тип услуги нужен?");
-let servicePrice1 = +prompt("Сколько это будет стоить?");
-let service2 = prompt("Какой дополнительный тип услуги нужен?");
-let servicePrice2 = +prompt("Сколько это будет стоить?");
+const service1 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice1 = +prompt("Сколько это будет стоить?");
+const service2 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice2 = +prompt("Сколько это будет стоить?");
 
 const fullPrice = screeenPrice + servicePrice1 + servicePrice2;
 const rollback = 10;
