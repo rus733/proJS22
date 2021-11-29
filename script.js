@@ -12,8 +12,8 @@ const servicePrice2 = +prompt("Сколько это будет стоить?");
 
 const fullPrice = screeenPrice + servicePrice1 + servicePrice2;
 const rollback = 10;
-const servicePercentPrice = fullPrice - fullPrice * (rollback / 100);
-console.log(Math.ceil(servicePercentPrice));
+const servicePercentPrice = Math.ceil(fullPrice * (1 - rollback / 100));
+console.log(servicePercentPrice);
 
 if (fullPrice >= 30000) {
   console.log("Даем скидку в 10%");
