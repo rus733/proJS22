@@ -1,5 +1,4 @@
 "use strict";
-// урок 4
 let title = prompt("Как называется ваш проект?");
 const screens = prompt("Какие типы экранов нужно разработать?");
 const screenPrice = +prompt("Сколько будет стоить данная работа?");
