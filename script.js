@@ -43,7 +43,7 @@ fullPrice = getFullPrice();
 const getTitle = function (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-console.log(getTitle(title));
+//console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
   return Math.ceil(fullPrice * (1 - rollback / 100));
@@ -56,24 +56,13 @@ showTypeOf(adaptive);
 
 console.log(screens.split(""));
 console.log(getRollbackMessage(fullPrice));
-console.log(typeof title);
-console.log(typeof screeenPrice);
-console.log(typeof adaptive);
+//console.log(typeof title);
+//console.log(typeof screeenPrice);
+//console.log(typeof adaptive);
 
-console.log("строка имеет длину, равную " + screens.length + " символ");
-console.log(screens.toLowerCase().split(", "));
-console.log(fullPrice * (rollback / 100));
+//console.log("строка имеет длину, равную " + screens.length + " символ");
+//console.log(screens.toLowerCase().split(", "));
+//console.log(fullPrice * (rollback / 100));
 console.log(servicePercentPrice);
-console.log(`Стоимость верстки экранов ${screenPrice} рублей
-Стоимость разработки сайта ${fullPrice} рублей`);
-/*
-6) Почистить консоль логи и добавить недостающие, должны остаться:
-
-- вызовы функции showTypeOf
-
-- вывод строки с типами экранов для разработки screens
-
-- сообщение о скидке пользователю (вызовы функции getRollbackMessage)
-
-- стоимость за вычетом процента отката посреднику (вызовы функции getServicePercentPrices)
-
+//console.log(`Стоимость верстки экранов ${screenPrice} рублей
+//Стоимость разработки сайта ${fullPrice} рублей`);
