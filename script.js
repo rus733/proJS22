@@ -11,6 +11,7 @@ const servicePrice2 = +prompt("Сколько это будет стоить?");
 const rollback = 10;
 let fullPrice;
 let allServicePrices;
+let servicePercentPrice;
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
@@ -38,9 +39,16 @@ const getFullPrice = function () {
 };
 fullPrice = getFullPrice();
 
-const getTitle = function (string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+//const getTitle = function (string) {
+// return string.charAt(0).toUpperCase() + string.slice(1);
+//};
+
+let getTitle = function (string) {
+  string = string.trim();
+  return string[0].toUpperCase() + string.substr(1).toLowerCase();
 };
+getTitle(title);
+console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
   return Math.ceil(fullPrice * (1 - rollback / 100));
