@@ -55,6 +55,7 @@ showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
 console.log(screens.split(""));
+console.log(screens);
 console.log(getRollbackMessage(fullPrice));
 //console.log(typeof title);
 //console.log(typeof screeenPrice);
