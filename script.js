@@ -39,10 +39,6 @@ const getFullPrice = function () {
 };
 fullPrice = getFullPrice();
 
-//const getTitle = function (string) {
-// return string.charAt(0).toUpperCase() + string.slice(1);
-//};
-
 let getTitle = function (string) {
   string = string.trim();
   return string[0].toUpperCase() + string.substr(1).toLowerCase();
