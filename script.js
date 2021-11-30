@@ -8,10 +8,8 @@ const service1 = prompt("Какой дополнительный тип услу
 const servicePrice1 = +prompt("Сколько это будет стоить?");
 const service2 = prompt("Какой дополнительный тип услуги нужен?");
 const servicePrice2 = +prompt("Сколько это будет стоить?");
-//const fullPrice = screeenPrice + servicePrice1 + servicePrice2;
 const rollback = 10;
 let fullPrice;
-let servicePercentPrice = Math.ceil(fullPrice * (1 - rollback / 100));
 let allServicePrices;
 
 const showTypeOf = function (variable) {
@@ -43,7 +41,6 @@ fullPrice = getFullPrice();
 const getTitle = function (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-//console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
   return Math.ceil(fullPrice * (1 - rollback / 100));
@@ -57,13 +54,4 @@ showTypeOf(adaptive);
 console.log(screens.split(""));
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
-//console.log(typeof title);
-//console.log(typeof screeenPrice);
-//console.log(typeof adaptive);
-
-//console.log("строка имеет длину, равную " + screens.length + " символ");
-//console.log(screens.toLowerCase().split(", "));
-//console.log(fullPrice * (rollback / 100));
 console.log(servicePercentPrice);
-//console.log(`Стоимость верстки экранов ${screenPrice} рублей
-//Стоимость разработки сайта ${fullPrice} рублей`);
