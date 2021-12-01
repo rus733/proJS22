@@ -50,14 +50,14 @@ const getServicePercentPrices = function () {
 };
 const servicePercentPrice = getServicePercentPrices();
 
-const screensSpilt = screens.toLowerCase().split("");
+const screensSpilt = screens.toLowerCase().split();
 
 showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
 //console.log(screens.toLowerCase().split(""));
-console.log(screensSpiltvar);
+console.log(screensSpilt);
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
