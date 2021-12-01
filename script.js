@@ -1,5 +1,5 @@
 "use strict";
-// принято
+// lesson03 принято
 const title = prompt("Как называется ваш проект?");
 const screens = prompt("Какие типы экранов нужно разработать?");
 const screeenPrice = +prompt("Сколько будет стоить данная работа?");
