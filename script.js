@@ -8,9 +8,6 @@ const servicePrice1 = +prompt("Сколько это будет стоить?");
 const service2 = prompt("Какой дополнительный тип услуги нужен?");
 const servicePrice2 = +prompt("Сколько это будет стоить?");
 const rollback = 10;
-let fullPrice;
-let allServicePrices;
-let servicePercentPrice;
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
@@ -31,30 +28,36 @@ const getRollbackMessage = function (price) {
 const getAllServicePrices = function () {
   return servicePrice1 + servicePrice2;
 };
-allServicePrices = getAllServicePrices();
+const allServicePrices = getAllServicePrices();
 
 const getFullPrice = function () {
   return screenPrice + allServicePrices;
 };
-fullPrice = getFullPrice();
+const fullPrice = getFullPrice();
 
-let getTitle = function (string) {
-  string = string.trim();
-  return string[0].toUpperCase() + string.substr(1).toLowerCase();
+const getTitle = function (string) {
+  const internVar = string.trim().toLowerCase();
+  //console.log(internVar);
+  return internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
+  //return internVar.string[0].toUpperCase();
 };
-getTitle(title);
+//title = getTitle(title);
+//console.log(title);
 console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
   return Math.ceil(fullPrice * (1 - rollback / 100));
 };
-servicePercentPrice = getServicePercentPrices();
+const servicePercentPrice = getServicePercentPrices();
+
+const screensSpilt = screens.toLowerCase().split("");
 
 showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
-console.log(screens.split(""));
+//console.log(screens.toLowerCase().split(""));
+console.log(screensSpiltvar);
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
