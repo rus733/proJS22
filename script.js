@@ -1,5 +1,5 @@
 "use strict";
-let title = prompt("Как называется ваш проект?");
+const title = prompt("Как называется ваш проект?");
 const screens = prompt("Какие типы экранов нужно разработать?");
 const screenPrice = +prompt("Сколько будет стоить данная работа?");
 const adaptive = confirm("Нужен ли адаптив на сайте?");
@@ -39,7 +39,6 @@ const getTitle = function (string) {
   const internVar = string.trim().toLowerCase();
   return internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
 };
-console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
   return Math.ceil(fullPrice * (1 - rollback / 100));
@@ -52,6 +51,7 @@ showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
+console.log(getTitle(title));
 console.log(screensSpilt);
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
