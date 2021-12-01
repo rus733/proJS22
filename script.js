@@ -37,12 +37,8 @@ const fullPrice = getFullPrice();
 
 const getTitle = function (string) {
   const internVar = string.trim().toLowerCase();
-  //console.log(internVar);
   return internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
-  //return internVar.string[0].toUpperCase();
 };
-//title = getTitle(title);
-//console.log(title);
 console.log(getTitle(title));
 
 const getServicePercentPrices = function () {
@@ -56,7 +52,6 @@ showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
-//console.log(screens.toLowerCase().split(""));
 console.log(screensSpilt);
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
