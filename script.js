@@ -56,10 +56,10 @@ const getAllServicePrices = function () {
     }
 
     do {
-      servicePrice = Number(prompt("Сколько это будет стоить?"));
+      servicePrice = +prompt("Сколько это будет стоить?");
     } while (!isNumber(servicePrice));
 
-    sum += Number(servicePrice);
+    sum += servicePrice;
   }
 
   return sum;
