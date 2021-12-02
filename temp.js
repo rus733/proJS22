@@ -1,5 +1,24 @@
 "use strict";
 
+// проверка на число
+
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
+
+//while (
+//isNaN(screenPrice) ||
+//screenPrice.trim() === "" ||
+//screenPrice === null
+
+//servicePrice = prompt("Сколько это будет стоить?");
+
+//while (!isNumber(servicePrice)) {
+//servicePrice = prompt("Сколько это будет стоить?");
+//}
+
+//)   // не очень удачная проверка на число
+
 // lesson04 принято- делаем новую ветку под lesson05
 const title = prompt("Как называется ваш проект?");
 const screens = prompt("Какие типы экранов нужно разработать?");
