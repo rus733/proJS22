@@ -1,36 +1,98 @@
 "use strict";
 
-// lesson06
-//игровой бот.
-//"Загадывание случайного числа от 1 до 100"
+// задание   07
 
-let randomNum = 50;
+const appData = {
+  title: "",
+  screens: "",
+  screenPrice: 0,
+  adaptive: true,
+  service1: "",
+  service2: "",
+  rollback: 10,
+  allServicePrices: 0,
+  fullPrice: 0,
+  servicePercentPrice: 0,
 
-const isNumber = function (num) {
-  return !isNaN(parseFloat(num)) && isFinite(num);
+  asking: function () {
+    appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
+    appData.screens = prompt("Какие типы экранов нужно разработать?", " Сложные");
+    do {
+      appData.screenPrice = +prompt("Сколько будет стоить данная работа?", 12000);
+    } while (!appData.isNumber(appData.screenPrice));
+    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+  },
+
+  isNumber: function (num) {
+    return !isNaN(parseFloat(num)) && isFinite(num);
+  },
+
+  getRollbackMessage: function (price) {
+    if (price >= 30000) {
+      return "Даем скидку в 10%";
+    } else if (15000 <= price && price < 30000) {
+      return "Даем скидку в 5%";
+    } else if (0 <= price && price < 15000) {
+      return "Скидка не предусмотрена";
+    } else {
+      return "Что то пошло не так";
+    }
+  },
+
+  getAllServicePrices: function () {
+    let sum = 0;
+
+    for (let i = 0; i < 2; i++) {
+      let price = 0;
+
+      if (i === 0) {
+        appData.service1 = prompt("Какой дополнительный тип услуги нужен?", "метрика");
+      } else if (i === 1) {
+        appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
+      }
+
+      do {
+        price = +prompt("Сколько это будет стоить?");
+      } while (!appData.isNumber(price));
+
+      sum += +price;
+    }
+
+    return sum;
+  },
+
+  getFullPrice: function () {
+    return appData.screenPrice + appData.allServicePrices;
+  },
+
+  getTitle: function () {
+    const internVar = appData.title.trim().toLowerCase();
+    return internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
+  },
+
+  getServicePercentPrices: function () {
+    return Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
+  },
+
+  logger: () => {
+    //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
+    for (const key in appData) {
+      //console.log(`${key}: ${appData[key]}`);
+      if (typeof appData[key] !== "function") {
+        console.log(`${key}: ${appData[key]}`);
+      }
+    }
+  },
+
+  start: function () {
+    appData.asking();
+    appData.allServicePrices = appData.getAllServicePrices();
+    appData.fullPrice = appData.getFullPrice;
+    appData.servicePercentPrice = appData.getServicePercentPrices;
+    appData.screensSpilt = appData.screens.toLowerCase().split();
+    appData.title = appData.getTitle();
+    appData.logger();
+  },
 };
 
-function inputNumber() {
-  let randomNum = 50;
-  let userNum = prompt("Угадай число от 1 до 100");
-
-  if (userNum === null) {
-    return alert("Игра закончена");
-  } else if (isNumber(userNum)) {
-    userNum = +userNum;
-
-    if (userNum > randomNum) {
-      alert("Загаданное число меньше, введите новый вариант числа");
-    } else if (userNum < randomNum) {
-      alert("Загаданное число больше, введите новый вариант числа");
-    } else if (userNum === randomNum) {
-      alert("Поздравляю, Вы угадали!!!");
-      return userNum;
-    }
-  } else {
-    alert("Введите число!");
-  }
-  return inputNumber();
-}
-
-console.log(inputNumber());
+appData.start();
