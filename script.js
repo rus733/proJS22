@@ -16,7 +16,13 @@ const appData = {
 
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
-    appData.screens = prompt("Какие типы экранов нужно разработать?", " Сложные");
+
+    const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
+    appData.screens = screens
+      .toLowerCase()
+      .split(",")
+      .map((item) => item.trim());
+
     do {
       appData.screenPrice = +prompt("Сколько будет стоить данная работа?", 12000);
     } while (!appData.isNumber(appData.screenPrice));
@@ -74,6 +80,10 @@ const appData = {
     return Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
   },
 
+  //screens: appData.screens.toLowerCase().split(",").map(item => item.trim())),
+
+  //return appData.screens.toLowerCase().split(",");
+
   logger: () => {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
     for (const key in appData) {
@@ -89,7 +99,6 @@ const appData = {
     appData.allServicePrices = appData.getAllServicePrices();
     appData.fullPrice = appData.getFullPrice;
     appData.servicePercentPrice = appData.getServicePercentPrices;
-    appData.screensSpilt = appData.screens.toLowerCase().split();
     appData.title = appData.getTitle();
     appData.logger();
   },
