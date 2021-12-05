@@ -16,17 +16,23 @@ const appData = {
 
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
-
     const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
     appData.screens = screens
       .toLowerCase()
       .split(",")
       .map((item) => item.trim());
+    appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
+    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+  },
+
+  getPrice(msg, ans = "") {
+    let price = 0;
 
     do {
-      appData.screenPrice = +prompt("Сколько будет стоить данная работа?", 12000);
-    } while (!appData.isNumber(appData.screenPrice));
-    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+      price = +prompt(msg, ans);
+    } while (!appData.isNumber(price));
+
+    return price;
   },
 
   isNumber: function (num) {
@@ -57,11 +63,12 @@ const appData = {
         appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
       }
 
-      do {
-        price = +prompt("Сколько это будет стоить?");
-      } while (!appData.isNumber(price));
+      //do {
+      //price = +prompt("Сколько это будет стоить?");
+      //} while (!appData.isNumber(price));
 
-      sum += +price;
+      //sum += +price;
+      sum += appData.getPrice("Сколько это будет стоить?");
     }
 
     return sum;
@@ -79,10 +86,6 @@ const appData = {
   getServicePercentPrices: function () {
     return Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
   },
-
-  //screens: appData.screens.toLowerCase().split(",").map(item => item.trim())),
-
-  //return appData.screens.toLowerCase().split(",");
 
   logger: () => {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
