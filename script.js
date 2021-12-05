@@ -62,15 +62,8 @@ const appData = {
       } else if (i === 1) {
         appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
       }
-
-      //do {
-      //price = +prompt("Сколько это будет стоить?");
-      //} while (!appData.isNumber(price));
-
-      //sum += +price;
       sum += appData.getPrice("Сколько это будет стоить?");
     }
-
     return sum;
   },
 
@@ -90,7 +83,6 @@ const appData = {
   logger: () => {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
     for (const key in appData) {
-      //console.log(`${key}: ${appData[key]}`);
       if (typeof appData[key] !== "function") {
         console.log(`${key}: ${appData[key]}`);
       }
