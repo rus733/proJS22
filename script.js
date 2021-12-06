@@ -5,7 +5,7 @@
 
 const appData = {
   title: "",
-  screens: "",
+  screens: [],
   screenPrice: 0,
   adaptive: true,
   rollback: 10,
@@ -14,15 +14,6 @@ const appData = {
   servicePercentPrice: 0,
   services: {},
 
-  start: function () {
-    appData.asking();
-    appData.getAllServicePrices();
-    appData.getFullPrice();
-    appData.getServicePercentPrices();
-    appData.getTitle();
-    appData.logger();
-  },
-
   isNumber: function (num) {
     return !isNaN(parseFloat(num)) && isFinite(num);
   },
@@ -30,28 +21,34 @@ const appData = {
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "   КаЛьКулятор верстки");
     //const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
-    appData.screens = screens
-      .toLowerCase()
-      .split(",")
-      .map((item) => item.trim());
-    appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
+    //appData.screens = screens
+    // .toLowerCase()
+    // .split(",")
+    // .map((item) => item.trim());
+    // appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какой дополнительный тип услуги нужен?");
+      let name = prompt("Какие типы экранов нужно разработать?");
       let price = 0;
+      //name = name
+      //.toLowerCase()
+      //.split(",")
+      // .map((item) => item.trim());
+      //appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
+      price = appData.getPrice("Сколько будет стоить данная работа?", 12000);
+
+      appData.screens.push({ id: i, name: name, price: price });
     }
+
+    for (let screen of appData.screens) {
+      appData.screenPrice += +screen.price;
+    }
+
     for (let i = 0; i < 2; i++) {
       let name = prompt("Какой дополнительный тип услуги нужен?");
       let price = 0;
-
-      //if (i === 0) {
-      //appData.service1 = prompt("Какой дополнительный тип услуги нужен?", "метрика");
-      //} else if (i === 1) {
-      // appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
-      //}
-
       price = appData.getPrice("Сколько это будет стоить?", 1000);
-
       appData.services[name] = +price;
     }
   },
@@ -100,13 +97,25 @@ const appData = {
 
   logger: () => {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
-    for (const key in appData) {
-      if (typeof appData[key] !== "function") {
-        console.log(`${key}: ${appData[key]}`);
-      }
-    }
+    //for (const key in appData) {
+    //if (typeof appData[key] !== "function") {
+    // console.log(`${key}: ${appData[key]}`);
+    //}
+    //}
+    console.log(appData.fullPrice);
+    console.log(appData.servicePercentPrice);
+    console.log(appData.screens);
+    console.log(appData.services);
+  },
+
+  start: function () {
+    appData.asking();
+    appData.getAllServicePrices();
+    appData.getFullPrice();
+    appData.getServicePercentPrices();
+    appData.getTitle();
+    appData.logger();
   },
 };
 
 appData.start();
-console.log(appData.services);
