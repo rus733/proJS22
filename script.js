@@ -12,8 +12,8 @@ const appData = {
   allServicePrices: 0,
   fullPrice: 0,
   servicePercentPrice: 0,
-  service1: "",
-  service2: "",
+  services: {},
+
   start: function () {
     appData.asking();
     appData.getAllServicePrices();
@@ -28,30 +28,39 @@ const appData = {
   },
 
   asking: function () {
-    appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
-    const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
+    appData.title = prompt("Как называется ваш проект?", "   КаЛьКулятор верстки");
+    //const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
     appData.screens = screens
       .toLowerCase()
       .split(",")
       .map((item) => item.trim());
     appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+    for (let i = 0; i < 2; i++) {
+      let name = prompt("Какой дополнительный тип услуги нужен?");
+      let price = 0;
+    }
+    for (let i = 0; i < 2; i++) {
+      let name = prompt("Какой дополнительный тип услуги нужен?");
+      let price = 0;
+
+      //if (i === 0) {
+      //appData.service1 = prompt("Какой дополнительный тип услуги нужен?", "метрика");
+      //} else if (i === 1) {
+      // appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
+      //}
+
+      price = appData.getPrice("Сколько это будет стоить?", 1000);
+
+      appData.services[name] = +price;
+    }
   },
 
   getAllServicePrices: function () {
-    let sum = 0;
-
-    for (let i = 0; i < 2; i++) {
-      let price = 0;
-
-      if (i === 0) {
-        appData.service1 = prompt("Какой дополнительный тип услуги нужен?", "метрика");
-      } else if (i === 1) {
-        appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "отправка форм");
-      }
-      sum += appData.getPrice("Сколько это будет стоить?");
+    // перебор for in
+    for (let key in appData.services) {
+      appData.allServicePrices += appData.services[key];
     }
-    appData.allServicePrices = sum;
   },
 
   getPrice(msg, ans = "") {
@@ -100,3 +109,4 @@ const appData = {
 };
 
 appData.start();
+console.log(appData.services);
