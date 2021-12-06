@@ -15,6 +15,15 @@ const appData = {
   fullPrice: 0,
   servicePercentPrice: 0,
 
+  start: function () {
+    appData.asking();
+    appData.getAllServicePrices();
+    appData.getFullPrice();
+    appData.getServicePercentPrices();
+    appData.getTitle();
+    appData.logger();
+  },
+
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
     const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
@@ -65,20 +74,20 @@ const appData = {
       }
       sum += appData.getPrice("Сколько это будет стоить?");
     }
-    return sum;
+    appData.allServicePrices = sum;
   },
 
   getFullPrice: function () {
-    return appData.screenPrice + appData.allServicePrices;
+    appData.fullPrice = appData.screenPrice + appData.allServicePrices;
   },
 
   getTitle: function () {
     const internVar = appData.title.trim().toLowerCase();
-    return internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
+    appData.title = internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
   },
 
   getServicePercentPrices: function () {
-    return Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
+    appData.servicePercentPrice = Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
   },
 
   logger: () => {
@@ -88,15 +97,6 @@ const appData = {
         console.log(`${key}: ${appData[key]}`);
       }
     }
-  },
-
-  start: function () {
-    appData.asking();
-    appData.allServicePrices = appData.getAllServicePrices();
-    appData.fullPrice = appData.getFullPrice;
-    appData.servicePercentPrice = appData.getServicePercentPrices;
-    appData.title = appData.getTitle();
-    appData.logger();
   },
 };
 
