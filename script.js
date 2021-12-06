@@ -14,6 +14,16 @@ const appData = {
   servicePercentPrice: 0,
   services: {},
 
+  start: function () {
+    appData.asking();
+    appData.addPrices();
+    //appData.getAllServicePrices();
+    appData.getFullPrice();
+    appData.getServicePercentPrices();
+    appData.getTitle();
+    appData.logger();
+  },
+
   isNumber: function (num) {
     return !isNaN(parseFloat(num)) && isFinite(num);
   },
@@ -41,10 +51,6 @@ const appData = {
       appData.screens.push({ id: i, name: name, price: price });
     }
 
-    for (let screen of appData.screens) {
-      appData.screenPrice += +screen.price;
-    }
-
     for (let i = 0; i < 2; i++) {
       let name = prompt("Какой дополнительный тип услуги нужен?");
       let price = 0;
@@ -53,12 +59,22 @@ const appData = {
     }
   },
 
-  getAllServicePrices: function () {
-    // перебор for in
+  addPrices: function () {
+    for (let screen of appData.screens) {
+      appData.screenPrice += +screen.price;
+    }
+
     for (let key in appData.services) {
       appData.allServicePrices += appData.services[key];
     }
   },
+
+  //getAllServicePrices: function () {
+  // перебор for in
+  //for (let key in appData.services) {
+  // appData.allServicePrices += appData.services[key];
+  //}
+  //},
 
   getPrice(msg, ans = "") {
     let price = 0;
@@ -106,15 +122,6 @@ const appData = {
     console.log(appData.servicePercentPrice);
     console.log(appData.screens);
     console.log(appData.services);
-  },
-
-  start: function () {
-    appData.asking();
-    appData.getAllServicePrices();
-    appData.getFullPrice();
-    appData.getServicePercentPrices();
-    appData.getTitle();
-    appData.logger();
   },
 };
 
