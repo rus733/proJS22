@@ -1,6 +1,6 @@
 "use strict";
 
-// задание   07
+// задание   07 принято
 
 const appData = {
   title: "",
