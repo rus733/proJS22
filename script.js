@@ -8,13 +8,12 @@ const appData = {
   screens: "",
   screenPrice: 0,
   adaptive: true,
-  service1: "",
-  service2: "",
   rollback: 10,
   allServicePrices: 0,
   fullPrice: 0,
   servicePercentPrice: 0,
-
+  service1: "",
+  service2: "",
   start: function () {
     appData.asking();
     appData.getAllServicePrices();
@@ -22,6 +21,10 @@ const appData = {
     appData.getServicePercentPrices();
     appData.getTitle();
     appData.logger();
+  },
+
+  isNumber: function (num) {
+    return !isNaN(parseFloat(num)) && isFinite(num);
   },
 
   asking: function () {
@@ -33,32 +36,6 @@ const appData = {
       .map((item) => item.trim());
     appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
-  },
-
-  getPrice(msg, ans = "") {
-    let price = 0;
-
-    do {
-      price = +prompt(msg, ans);
-    } while (!appData.isNumber(price));
-
-    return price;
-  },
-
-  isNumber: function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num);
-  },
-
-  getRollbackMessage: function (price) {
-    if (price >= 30000) {
-      return "Даем скидку в 10%";
-    } else if (15000 <= price && price < 30000) {
-      return "Даем скидку в 5%";
-    } else if (0 <= price && price < 15000) {
-      return "Скидка не предусмотрена";
-    } else {
-      return "Что то пошло не так";
-    }
   },
 
   getAllServicePrices: function () {
@@ -75,6 +52,28 @@ const appData = {
       sum += appData.getPrice("Сколько это будет стоить?");
     }
     appData.allServicePrices = sum;
+  },
+
+  getPrice(msg, ans = "") {
+    let price = 0;
+
+    do {
+      price = +prompt(msg, ans);
+    } while (!appData.isNumber(price));
+
+    return price;
+  },
+
+  getRollbackMessage: function (price) {
+    if (price >= 30000) {
+      return "Даем скидку в 10%";
+    } else if (15000 <= price && price < 30000) {
+      return "Даем скидку в 5%";
+    } else if (0 <= price && price < 15000) {
+      return "Скидка не предусмотрена";
+    } else {
+      return "Что то пошло не так";
+    }
   },
 
   getFullPrice: function () {
