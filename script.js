@@ -29,7 +29,7 @@ const appData = {
   },
 
   asking: function () {
-    appData.title = prompt("Как называется ваш проект?", "   КаЛьКулятор верстки");
+    appData.title = appData.checkString("Как называется ваш проект?", "   КаЛьКулятор верстки");
 
     for (let i = 0; i < 2; i++) {
       //let name = prompt("Какие типы экранов нужно разработать?");
@@ -43,7 +43,7 @@ const appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какой дополнительный тип услуги нужен?");
+      let name = appData.checkString("Какой дополнительный тип услуги нужен?");
       let price = 0;
       price = appData.getPrice("Сколько это будет стоить?", 1000);
       appData.services[name] = +price;
