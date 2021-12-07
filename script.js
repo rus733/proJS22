@@ -30,22 +30,13 @@ const appData = {
 
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "   КаЛьКулятор верстки");
-    //const screens = prompt("Какие типы экранов нужно разработать?", " Сложные, простые, адаптивные  ");
-    //appData.screens = screens
-    // .toLowerCase()
-    // .split(",")
-    // .map((item) => item.trim());
-    // appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
-    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какие типы экранов нужно разработать?");
+      //let name = prompt("Какие типы экранов нужно разработать?");
+      let name = appData.checkString("Какие типы экранов нужно разработать?");
+
       let price = 0;
-      //name = name
-      //.toLowerCase()
-      //.split(",")
-      // .map((item) => item.trim());
-      //appData.screenPrice = appData.getPrice("Сколько будет стоить данная работа?", 12000);
+
       price = appData.getPrice("Сколько будет стоить данная работа?", 12000);
 
       appData.screens.push({ id: i, name: name, price: price });
@@ -57,6 +48,7 @@ const appData = {
       price = appData.getPrice("Сколько это будет стоить?", 1000);
       appData.services[name] = +price;
     }
+    appData.adaptive = confirm("Нужен ли адаптив на сайте?");
   },
 
   addPrices: function () {
@@ -69,18 +61,29 @@ const appData = {
     }
   },
 
-  //getAllServicePrices: function () {
-  // перебор for in
-  //for (let key in appData.services) {
-  // appData.allServicePrices += appData.services[key];
-  //}
-  //},
+  checkString(msg) {
+    let string = "";
+    do {
+      string = prompt(msg);
+      if (isNaN(string)) {
+      } else {
+        alert("Вы ввели число , нужно ввести текст , попробуйте еще раз");
+      }
+    } while (!isNaN(string));
 
-  getPrice(msg, ans = "") {
+    return string;
+  },
+
+  getPrice(msg) {
     let price = 0;
 
     do {
-      price = +prompt(msg, ans);
+      price = +prompt(msg);
+
+      if (appData.isNumber(price)) {
+      } else if (price !== null) {
+        alert("ВЫ ввели не число, попробуйте еще раз");
+      }
     } while (!appData.isNumber(price));
 
     return price;
@@ -113,11 +116,11 @@ const appData = {
 
   logger: () => {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
-    //for (const key in appData) {
-    //if (typeof appData[key] !== "function") {
-    // console.log(`${key}: ${appData[key]}`);
-    //}
-    //}
+    for (const key in appData) {
+      if (typeof appData[key] !== "function") {
+        console.log(`${key}: ${appData[key]}`);
+      }
+    }
     console.log(appData.fullPrice);
     console.log(appData.servicePercentPrice);
     console.log(appData.screens);

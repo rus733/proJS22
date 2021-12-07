@@ -1,9 +1,40 @@
 "use strict";
 
+///вар 1
+
+var n = "12";
+isNaN(n); // вернет false, т.к. может значение переменной n можно преобразовать в число
+typeof n == "string"; // вернет true
+
+// вар 2
+
+let userInput;
+
+const numbers = [];
+
+let total = 0;
+
+do {
+  userInput = prompt(`Введите ${numbers.length + 1}-e число`, "");
+
+  if (userInput == +userInput && userInput.trim()) {
+    numbers.push(+userInput);
+  } else if (userInput !== null) alert("Было введено не число, попробуйте еще раз");
+} while (userInput !== null);
+
+for (const value of numbers) {
+  total = total + value;
+}
+
+alert(`Общая сумма ${numbers.length} чисел равна ${total}`);
+
+console.log(numbers);
+
 /*
 
 
 // задание   07 принято
+
 
 const appData = {
   title: "",
