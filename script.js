@@ -1,8 +1,6 @@
 "use strict";
 // задание   08
 
-// задание   07 принято
-
 const appData = {
   title: "",
   screens: [],
@@ -28,10 +26,10 @@ const appData = {
   },
 
   asking: function () {
-    appData.title = appData.checkString("Как называется ваш проект?", "   КаЛьКулятор верстки");
+    appData.title = appData.getString("Как называется ваш проект?", "   КаЛьКулятор верстки");
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.checkString("Какие типы экранов нужно разработать?");
+      let name = appData.getString("Какие типы экранов нужно разработать?", "простые, сложные");
 
       let price = 0;
 
@@ -41,7 +39,7 @@ const appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.checkString("Какой дополнительный тип услуги нужен?");
+      let name = appData.getString("Какой дополнительный тип услуги нужен?", "метрика");
       let price = 0;
       price = appData.getPrice("Сколько это будет стоить?", 1000);
       appData.services[name] = +price;
@@ -59,10 +57,10 @@ const appData = {
     }
   },
 
-  checkString(msg) {
+  getString(msg, ans = "") {
     let string = "";
     do {
-      string = prompt(msg);
+      string = prompt(msg, ans);
       if (isNaN(string)) {
       } else {
         alert("Вы ввели число , нужно ввести текст , попробуйте еще раз");
@@ -72,11 +70,11 @@ const appData = {
     return string;
   },
 
-  getPrice(msg) {
+  getPrice(msg, ans) {
     let price = 0;
 
     do {
-      price = +prompt(msg);
+      price = +prompt(msg, ans);
 
       if (appData.isNumber(price)) {
       } else if (price !== null) {

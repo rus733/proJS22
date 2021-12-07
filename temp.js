@@ -1,6 +1,6 @@
 "use strict";
 
-// задание   08 принято , делаем  услож
+// задание   08 , делаем  услож
 
 const appData = {
   title: "",
@@ -27,10 +27,10 @@ const appData = {
   },
 
   asking: function () {
-    appData.title = appData.checkString("Как называется ваш проект?", "   КаЛьКулятор верстки");
+    appData.title = appData.getString("Как называется ваш проект?", "   КаЛьКулятор верстки");
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.checkString("Какие типы экранов нужно разработать?");
+      let name = appData.getString("Какие типы экранов нужно разработать?");
 
       let price = 0;
 
@@ -40,7 +40,7 @@ const appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.checkString("Какой дополнительный тип услуги нужен?");
+      let name = appData.getString("Какой дополнительный тип услуги нужен?");
       let price = 0;
       price = appData.getPrice("Сколько это будет стоить?", 1000);
       appData.services[name] = +price;
@@ -58,7 +58,7 @@ const appData = {
     }
   },
 
-  checkString(msg) {
+  getString(msg) {
     let string = "";
     do {
       string = prompt(msg);
