@@ -17,7 +17,6 @@ const appData = {
   start: function () {
     appData.asking();
     appData.addPrices();
-    //appData.getAllServicePrices();
     appData.getFullPrice();
     appData.getServicePercentPrices();
     appData.getTitle();
@@ -32,7 +31,6 @@ const appData = {
     appData.title = appData.checkString("Как называется ваш проект?", "   КаЛьКулятор верстки");
 
     for (let i = 0; i < 2; i++) {
-      //let name = prompt("Какие типы экранов нужно разработать?");
       let name = appData.checkString("Какие типы экранов нужно разработать?");
 
       let price = 0;
