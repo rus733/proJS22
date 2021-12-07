@@ -29,19 +29,16 @@ const appData = {
     appData.title = appData.getString("Как называется ваш проект?", "   КаЛьКулятор верстки");
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.getString("Какие типы экранов нужно разработать?", "простые, сложные");
+      const name = appData.getString("Какие типы экранов нужно разработать?", "простые, сложные");
+      const price = appData.getPrice("Сколько будет стоить данная работа?", 12000);
 
-      let price = 0;
-
-      price = appData.getPrice("Сколько будет стоить данная работа?", 12000);
-
-      appData.screens.push({ id: i, name: name, price: price });
+      appData.screens.push({ id: i, name, price });
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = appData.getString("Какой дополнительный тип услуги нужен?", "метрика");
-      let price = 0;
-      price = appData.getPrice("Сколько это будет стоить?", 1000);
+      const name = appData.getString("Какой дополнительный тип услуги нужен?", "метрика");
+      const price = appData.getPrice("Сколько это будет стоить?", 1000);
+
       appData.services[name] = +price;
     }
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
@@ -57,14 +54,27 @@ const appData = {
     }
   },
 
+  //getTrim: function (msg, ans) {
+  // return prompt(msg.trim(), ans);
+  // },
+
   getString(msg, ans = "") {
     let string = "";
+
     do {
       string = prompt(msg, ans);
-      if (isNaN(string)) {
-      } else {
+
+      if (string === null) {
+        return;
+      } else if (string === "") {
+        alert("Вы ввели пустую строку , нужно ввести текст , попробуйте еще раз");
+      } else if (!isNaN(string) && !(string === null)) {
         alert("Вы ввели число , нужно ввести текст , попробуйте еще раз");
       }
+
+      //if (string === null && string === "") {
+      // alert("Вы ввели пустую строку , нужно ввести текст , попробуйте еще раз");
+      //}
     } while (!isNaN(string));
 
     return string;
@@ -74,7 +84,7 @@ const appData = {
     let price = 0;
 
     do {
-      price = +prompt(msg, ans);
+      price = +prompt(msg.trim(), ans);
 
       if (appData.isNumber(price)) {
       } else if (price !== null) {
