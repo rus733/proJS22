@@ -1,34 +1,34 @@
 "use strict";
 // задание   09
 
-const title = document.getElementsByTagName("h1").title.textContent;
-const buttonReset = document.getElementsByClassName("handler_btn")[0];
-const buttonStart = document.getElementsByClassName("handler_btn")[1];
-const buttonPlus = document.querySelector(".screen-btn");
-const percent = document.querySelectorAll(".other-items.percent");
-const number = document.querySelectorAll(".other-items.number");
-const range = document.querySelector(".rollback > .main-controls__range > [type=range]");
-const rangeValue = document.querySelector(".rollback > .main-controls__range > .range-value ");
-const totalInput1 = document.getElementsByClassName("total-input")[0];
-const totalInput2 = document.getElementsByClassName("total-input")[1];
-const totalInput3 = document.getElementsByClassName("total-input")[2];
-const totalInput4 = document.getElementsByClassName("total-input")[3];
-const totalInput5 = document.getElementsByClassName("total-input")[4];
+const title = document.getElementsByTagName("h1").title;
+const resetHandlerBtn = document.getElementsByClassName("handler_btn")[0];
+const startHandlerBtn = document.getElementsByClassName("handler_btn")[1];
+const screenBtn = document.querySelector(".screen-btn");
+const otherItemsPercent = document.querySelectorAll(".other-items.percent");
+const otherItemsNumber = document.querySelectorAll(".other-items.number");
+const inpuTypeRange = document.querySelector(".rollback .main-controls__range [type=range]");
+const rangeValue = document.querySelector(".rollback .main-controls__range .range-value ");
+const total = document.getElementsByClassName("total-input")[0];
+const totalCount = document.getElementsByClassName("total-input")[1];
+const totalCountOther = document.getElementsByClassName("total-input")[2];
+const totalFullCount = document.getElementsByClassName("total-input")[3];
+const totalCountRollback = document.getElementsByClassName("total-input")[4];
 let divScreen = document.querySelectorAll(".screen");
 
 console.log(title);
-console.log(buttonReset);
-console.log(buttonStart);
-console.log(buttonPlus);
-console.log(percent);
-console.log(number);
-console.log(range);
+console.log(resetHandlerBtn);
+console.log(startHandlerBtn);
+console.log(screenBtn);
+console.log(otherItemsPercent);
+console.log(otherItemsNumber);
+console.log(inpuTypeRange);
 console.log(rangeValue);
-console.log(totalInput1);
-console.log(totalInput2);
-console.log(totalInput3);
-console.log(totalInput4);
-console.log(totalInput5);
+console.log(total);
+console.log(totalCount);
+console.log(totalCountOther);
+console.log(totalFullCount);
+console.log(totalCountRollback);
 console.log(divScreen);
 
 const appData = {
