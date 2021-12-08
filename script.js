@@ -71,12 +71,7 @@ const appData = {
       } else if (!isNaN(string) && !(string === null)) {
         alert("Вы ввели число , нужно ввести текст , попробуйте еще раз");
       }
-
-      //if (string === null && string === "") {
-      // alert("Вы ввели пустую строку , нужно ввести текст , попробуйте еще раз");
-      //}
     } while (!isNaN(string));
-
     return string;
   },
 
