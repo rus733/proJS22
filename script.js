@@ -54,10 +54,6 @@ const appData = {
     }
   },
 
-  //getTrim: function (msg, ans) {
-  // return prompt(msg.trim(), ans);
-  // },
-
   getString(msg, ans = "") {
     let string = "";
 
