@@ -1,6 +1,6 @@
 "use strict";
 
-//задание 9 после первых исправлений
+// задание   09 принято
 
 const title = document.getElementsByTagName("h1").title;
 const resetHandlerBtn = document.getElementsByClassName("handler_btn")[0];
