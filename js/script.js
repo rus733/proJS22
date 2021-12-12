@@ -9,19 +9,23 @@ const otherItemsNumber = document.querySelectorAll('.other-items.number');
 const inputRange = document.querySelector('.rollback .main-controls__range [type=range]');
 const inputRangeValue = document.querySelector('.rollback .main-controls__range .range-value ');
 
-const resetHandlerBtn = document.getElementsByClassName('handler_btn')[0];
-const startHandlerBtn = document.getElementsByClassName('handler_btn')[1];
+const startBtn = document.getElementsByClassName('handler_btn')[1];
+const resetBtn = document.getElementsByClassName('handler_btn')[0];
 
 const total = document.getElementsByClassName('total-input')[0];
+
 const totalCount = document.getElementsByClassName('total-input')[1];
+
 const totalCountOther = document.getElementsByClassName('total-input')[2];
+
 const totalFullCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
+
 let divScreen = document.querySelectorAll('.screen');
 
 console.log(title);
-console.log(resetHandlerBtn);
-console.log(startHandlerBtn);
+console.log(resetBtn);
+console.log(startBtn);
 console.log(buttonPlus);
 console.log(otherItemsPercent);
 console.log(otherItemsNumber);
