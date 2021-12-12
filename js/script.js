@@ -41,14 +41,17 @@ const appData = {
   fullPrice: 0,
   servicePercentPrice: 0,
   services: {},
+  init: function () {
+    appData.start();
+  },
 
   start: function () {
-    appData.asking();
-    appData.addPrices();
-    appData.getFullPrice();
-    appData.getServicePercentPrices();
-    appData.getTitle();
-    appData.logger();
+    //appData.asking();
+    //appData.addPrices();
+    //appData.getFullPrice();
+    //appData.getServicePercentPrices();
+    //appData.getTitle();
+    //appData.logger();
   },
 
   isNumber: function (num) {
@@ -155,4 +158,4 @@ const appData = {
   },
 };
 
-//appData.start();
+appData.init();
