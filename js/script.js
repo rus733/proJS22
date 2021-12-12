@@ -1,14 +1,14 @@
 'use strict';
 // задание   12
 
-const title = document.getElementsByTagName('h1').title;
+const title = document.getElementsByTagName('h1')[0];
 const buttonPlus = document.querySelector('.screen-btn');
 const otherItemsPercent = document.querySelectorAll('.other-items.percent');
 const otherItemsNumber = document.querySelectorAll('.other-items.number');
-const inputRange = document.querySelector('.rollback .main-controls__range [type=range]');
-const inputRangeValue = document.querySelector('.rollback .main-controls__range .range-value ');
-const startBtn = document.getElementsByClassName('handler_btn')[1];
-const resetBtn = document.getElementsByClassName('handler_btn')[0];
+const inputRange = document.querySelector('.rollback input');
+const inputRangeValue = document.querySelector('.rollback .range-value ');
+const startBtn = document.getElementsByClassName('handler_btn')[0];
+const resetBtn = document.getElementsByClassName('handler_btn')[1];
 const total = document.getElementsByClassName('total-input')[0];
 const totalCount = document.getElementsByClassName('total-input')[1];
 const totalCountOther = document.getElementsByClassName('total-input')[2];
@@ -17,19 +17,19 @@ const totalCountRollback = document.getElementsByClassName('total-input')[4];
 let screens = document.querySelectorAll('.screen');
 
 console.log(title);
-console.log(resetBtn);
-console.log(startBtn);
-console.log(buttonPlus);
-console.log(otherItemsPercent);
-console.log(otherItemsNumber);
-console.log(inputRange);
-console.log(inputRangeValue);
-console.log(total);
-console.log(totalCount);
-console.log(totalCountOther);
-console.log(fullTotalCount);
-console.log(totalCountRollback);
-console.log(screens);
+//console.log(resetBtn);
+//console.log(startBtn);
+////console.log(buttonPlus);
+//console.log(otherItemsPercent);
+//console.log(otherItemsNumber);
+//console.log(inputRange);
+//console.log(inputRangeValue);
+//console.log(total);
+//console.log(totalCount);
+//console.log(totalCountOther);
+//console.log(fullTotalCount);
+//console.log(totalCountRollback);
+//console.log(screens);
 
 const appData = {
   title: '',
@@ -42,10 +42,17 @@ const appData = {
   servicePercentPrice: 0,
   services: {},
   init: function () {
-    appData.start();
+    appData.addTitle();
+
+    startBtn.addEventListener('click', appData.start);
+  },
+  addTitle: function () {
+    console.log(title.textContent);
+    document.title = title.textContent;
   },
 
   start: function () {
+    alert('старт');
     //appData.asking();
     //appData.addPrices();
     //appData.getFullPrice();
@@ -97,7 +104,7 @@ const appData = {
         return;
       } else if (string === '') {
         alert('Вы ввели пустую строку , нужно ввести текст , попробуйте еще раз');
-      } else if (!isNaN(string) && !(string === null)) {
+      } else if (!isNaN(string) && string === null) {
         alert('Вы ввели число , нужно ввести текст , попробуйте еще раз');
       }
     } while (!isNaN(string));
