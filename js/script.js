@@ -1,5 +1,5 @@
 'use strict';
-// задание   09 принято
+// задание   12
 
 const title = document.getElementsByTagName('h1').title;
 const buttonPlus = document.querySelector('.screen-btn');
