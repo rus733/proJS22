@@ -82,20 +82,12 @@ const appData = {
   },
 
   asking: function () {
-    //appData.title = appData.getString('Как называется ваш проект?', '   КаЛьКулятор верстки');
-    /*
-    for (let i = 0; i < 2; i++) {
-      const name = appData.getString('Какие типы экранов нужно разработать?', 'простые, сложные');
-      const price = appData.getPrice('Сколько будет стоить данная работа?', 12000);
-    }
-*/
     for (let i = 0; i < 2; i++) {
       const name = appData.getString('Какой дополнительный тип услуги нужен?', 'метрика');
       const price = appData.getPrice('Сколько это будет стоить?', 1000);
 
       appData.services[name] = +price;
     }
-    //appData.adaptive = confirm('Нужен ли адаптив на сайте?');
   },
 
   addPrices: function () {
