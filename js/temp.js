@@ -1,6 +1,6 @@
 'use strict';
 //задание 09 принято и  поменял переменные как у Александра перед 12 заданием , ниже вариант без изменений
-
+/*
 const title = document.getElementsByTagName('h1').title;
 const buttonPlus = document.querySelector('.screen-btn');
 const otherItemsPercent = document.querySelectorAll('.other-items.percent');
@@ -164,6 +164,10 @@ const appData = {
 
 //appData.start();
 
+
+
+
+
 // задание   09 принято
 
 const title = document.getElementsByTagName('h1').title;
@@ -197,6 +201,11 @@ console.log(totalCountRollback);
 console.log(divScreen);
 // задание   08 принято
 
+
+
+
+
+
 const appData = {
   title: '',
   screens: [],
@@ -222,12 +231,22 @@ const appData = {
   },
 
   asking: function () {
+    appData.title = appData.getString('Как называется ваш проект?', '   КаЛьКулятор верстки');
+
+    for (let i = 0; i < 2; i++) {
+      const name = appData.getString('Какие типы экранов нужно разработать?', 'простые, сложные');
+      const price = appData.getPrice('Сколько будет стоить данная работа?', 12000);
+
+      appData.screens.push({ id: i, name, price });
+    }
+
     for (let i = 0; i < 2; i++) {
       const name = appData.getString('Какой дополнительный тип услуги нужен?', 'метрика');
       const price = appData.getPrice('Сколько это будет стоить?', 1000);
 
       appData.services[name] = +price;
     }
+    appData.adaptive = confirm('Нужен ли адаптив на сайте?');
   },
 
   addPrices: function () {
