@@ -1,5 +1,5 @@
 'use strict';
-//задание 09 поменял переменные как у Александра перед 12 заданием , ниже вариант без изменений
+//задание 09 принято и  поменял переменные как у Александра перед 12 заданием , ниже вариант без изменений
 
 const title = document.getElementsByTagName('h1').title;
 const buttonPlus = document.querySelector('.screen-btn');
@@ -9,8 +9,8 @@ const otherItemsNumber = document.querySelectorAll('.other-items.number');
 const inputRange = document.querySelector('.rollback .main-controls__range [type=range]');
 const inputRangeValue = document.querySelector('.rollback .main-controls__range .range-value ');
 
-const startBtn = document.getElementsByClassName('handler_btn')[1];
-const resetBtn = document.getElementsByClassName('handler_btn')[0];
+const startBtn = document.getElementsByClassName('handler_btn')[0];
+const resetBtn = document.getElementsByClassName('handler_btn')[1];
 
 const total = document.getElementsByClassName('total-input')[0];
 
@@ -21,7 +21,7 @@ const totalCountOther = document.getElementsByClassName('total-input')[2];
 const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
-let divScreen = document.querySelectorAll('.screen');
+let screens = document.querySelectorAll('.screen');
 
 console.log(title);
 console.log(resetBtn);
@@ -36,7 +36,7 @@ console.log(totalCount);
 console.log(totalCountOther);
 console.log(fullTotalCount);
 console.log(totalCountRollback);
-console.log(divScreen);
+console.log(screens);
 
 const appData = {
   title: '',
@@ -167,8 +167,8 @@ const appData = {
 // задание   09 принято
 
 const title = document.getElementsByTagName('h1').title;
-const resetHandlerBtn = document.getElementsByClassName('handler_btn')[0];
-const startHandlerBtn = document.getElementsByClassName('handler_btn')[1];
+const resetHandlerBtn = document.getElementsByClassName('handler_btn')[1];
+const startHandlerBtn = document.getElementsByClassName('handler_btn')[0];
 const screenBtn = document.querySelector('.screen-btn');
 const otherItemsPercent = document.querySelectorAll('.other-items.percent');
 const otherItemsNumber = document.querySelectorAll('.other-items.number');
@@ -222,22 +222,22 @@ const appData = {
   },
 
   asking: function () {
-    appData.title = appData.getString('Как называется ваш проект?', '   КаЛьКулятор верстки');
-
+    //appData.title = appData.getString('Как называется ваш проект?', '   КаЛьКулятор верстки');
+    /*
     for (let i = 0; i < 2; i++) {
       const name = appData.getString('Какие типы экранов нужно разработать?', 'простые, сложные');
       const price = appData.getPrice('Сколько будет стоить данная работа?', 12000);
 
       appData.screens.push({ id: i, name, price });
     }
-
+*/
     for (let i = 0; i < 2; i++) {
       const name = appData.getString('Какой дополнительный тип услуги нужен?', 'метрика');
       const price = appData.getPrice('Сколько это будет стоить?', 1000);
 
       appData.services[name] = +price;
     }
-    appData.adaptive = confirm('Нужен ли адаптив на сайте?');
+    //appData.adaptive = confirm('Нужен ли адаптив на сайте?');
   },
 
   addPrices: function () {

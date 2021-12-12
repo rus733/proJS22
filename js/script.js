@@ -52,7 +52,7 @@ const appData = {
   },
 
   start: function () {
-    alert('старт');
+    appData.addScreens();
     //appData.asking();
     //appData.addPrices();
     //appData.getFullPrice();
@@ -65,14 +65,26 @@ const appData = {
     return !isNaN(parseFloat(num)) && isFinite(num);
   },
 
-  asking: function () {
-    appData.title = appData.getString('Как называется ваш проект?', '   КаЛьКулятор верстки');
+  addScreens: function () {
+    screens.forEach(function (screen, index) {
+      const select = screen.querySelector('select');
+      const input = screen.querySelector('input');
+      ///console.log(select.value);
+      //console.log(input.value);
+      const selectName = select.options[select.selectedIndex].textContent;
+      appData.screens.push({
+        id: index,
+        name: selectName,
+        price: +select.value * +input.value,
+      });
+    });
+    console.log(appData.screens);
+  },
 
+  asking: function () {
     for (let i = 0; i < 2; i++) {
       const name = appData.getString('Какие типы экранов нужно разработать?', 'простые, сложные');
       const price = appData.getPrice('Сколько будет стоить данная работа?', 12000);
-
-      appData.screens.push({ id: i, name, price });
     }
 
     for (let i = 0; i < 2; i++) {
