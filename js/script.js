@@ -93,9 +93,9 @@ const appData = {
       const name = appData.getString('Какой дополнительный тип услуги нужен?', 'метрика');
       const price = appData.getPrice('Сколько это будет стоить?', 1000);
 
-      //appData.services[name] = +price;
+      appData.services[name] = +price;
     }
-    appData.adaptive = confirm('Нужен ли адаптив на сайте?');
+    //appData.adaptive = confirm('Нужен ли адаптив на сайте?');
   },
 
   addPrices: function () {
