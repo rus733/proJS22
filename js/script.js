@@ -18,7 +18,7 @@ const totalCount = document.getElementsByClassName('total-input')[1];
 
 const totalCountOther = document.getElementsByClassName('total-input')[2];
 
-const totalFullCount = document.getElementsByClassName('total-input')[3];
+const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
 let divScreen = document.querySelectorAll('.screen');
@@ -34,7 +34,7 @@ console.log(inputRangeValue);
 console.log(total);
 console.log(totalCount);
 console.log(totalCountOther);
-console.log(totalFullCount);
+console.log(fullTotalCount);
 console.log(totalCountRollback);
 console.log(divScreen);
 
