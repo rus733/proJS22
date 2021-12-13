@@ -56,11 +56,10 @@ const appData = {
   start: function () {
     appData.addScreens();
     appData.addServices();
-    //appData.asking();
-    //appData.addPrices();
+    appData.addPrices();
     //appData.getFullPrice();
     //appData.getServicePercentPrices();
-    //appData.getTitle();
+
     //appData.logger();
   },
 
@@ -105,15 +104,11 @@ const appData = {
         appData.servicesNumber[label.textContent] = +input.value;
       }
     });
-    console.log(appData);
   },
 
   addScreenBlock: function () {
     const cloneScreen = screens[0].cloneNode(true);
 
-    //console.log(cloneScreen);
-
-    //screens[screens.lenght - 1].after(cloneScreen);
     screens[screens.length - 1].after(cloneScreen);
   },
 
