@@ -58,7 +58,7 @@ const appData = {
     appData.addScreens();
     appData.addServices();
     appData.addPrices();
-    //appData.getFullPrice();
+
     //appData.getServicePercentPrices();
 
     //appData.logger();
@@ -171,15 +171,6 @@ const appData = {
     } else {
       return 'Что то пошло не так';
     }
-  },
-
-  getFullPrice: function () {
-    appData.fullPrice = +appData.screenPrice + appData.allServicePrices;
-  },
-
-  getTitle: function () {
-    const internVar = appData.title.trim().toLowerCase();
-    appData.title = internVar[0].toUpperCase() + internVar.substr(1).toLowerCase();
   },
 
   getServicePercentPrices: function () {
