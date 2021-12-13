@@ -117,15 +117,6 @@ const appData = {
     screens[screens.length - 1].after(cloneScreen);
   },
 
-  asking: function () {
-    for (let i = 0; i < 2; i++) {
-      const name = appData.getString('Какой дополнительный тип услуги нужен?', 'метрика');
-      const price = appData.getPrice('Сколько это будет стоить?', 1000);
-
-      appData.services[name] = +price;
-    }
-  },
-
   addPrices: function () {
     for (let screen of appData.screens) {
       appData.screenPrice += +screen.price;
