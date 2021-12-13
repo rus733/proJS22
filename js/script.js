@@ -37,7 +37,8 @@ const appData = {
   screenPrice: 0,
   adaptive: true,
   rollback: 10,
-  allServicePrices: 0,
+  servicePricesPercent: 0,
+  servicePricesNumber: 0,
   fullPrice: 0,
   servicePercentPrice: 0,
   servicesPercent: {},
@@ -61,6 +62,7 @@ const appData = {
     //appData.getServicePercentPrices();
 
     //appData.logger();
+    console.log(appData);
   },
 
   //isNumber: function (num) {
@@ -117,9 +119,14 @@ const appData = {
       appData.screenPrice += +screen.price;
     }
 
-    for (let key in appData.services) {
-      appData.allServicePrices += appData.services[key];
+    for (let key in appData.servicesNumber) {
+      appData.servicePricesNumber += appData.servicesNumber[key];
     }
+
+    for (let key in appData.servicesPercent) {
+      appData.servicePricesPercent += (appData.screenPrice * appData.servicesPercent[key]) / 100;
+    }
+    appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
   },
 
   getString(msg, ans = '') {
@@ -167,7 +174,7 @@ const appData = {
   },
 
   getFullPrice: function () {
-    appData.fullPrice = appData.screenPrice + appData.allServicePrices;
+    appData.fullPrice = +appData.screenPrice + appData.allServicePrices;
   },
 
   getTitle: function () {
