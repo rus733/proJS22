@@ -16,21 +16,6 @@ const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 let screens = document.querySelectorAll('.screen');
 
-//console.log(title);
-//console.log(resetBtn);
-//console.log(startBtn);
-////console.log(buttonPlus);
-//console.log(otherItemsPercent);
-//console.log(otherItemsNumber);
-
-//console.log(inputRangeValue);
-//console.log(total);
-//console.log(totalCount);
-//console.log(totalCountOther);
-//console.log(fullTotalCount);
-//console.log(totalCountRollback);
-//console.log(screens);
-
 const appData = {
   title: '',
   screens: [],
@@ -92,6 +77,11 @@ const appData = {
     console.log(appData.screens);
   },
 
+  addScreenBlock: function () {
+    const cloneScreen = screens[0].cloneNode(true);
+    screens[screens.length - 1].after(cloneScreen);
+  },
+
   addServices: function () {
     otherItemsPercent.forEach(function (item) {
       const check = item.querySelector('input[type=checkbox]');
@@ -112,12 +102,6 @@ const appData = {
         appData.servicesNumber[label.textContent] = +input.value;
       }
     });
-  },
-
-  addScreenBlock: function () {
-    const cloneScreen = screens[0].cloneNode(true);
-
-    screens[screens.length - 1].after(cloneScreen);
   },
 
   getRollback() {
