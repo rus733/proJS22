@@ -16,13 +16,14 @@ const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 let screens = document.querySelectorAll('.screen');
 
-console.log(title);
+//console.log(title);
 //console.log(resetBtn);
 //console.log(startBtn);
 ////console.log(buttonPlus);
 //console.log(otherItemsPercent);
 //console.log(otherItemsNumber);
-//console.log(inputRange);
+console.log(inputRange);
+console.log(inputRange.value);
 //console.log(inputRangeValue);
 //console.log(total);
 //console.log(totalCount);
@@ -31,22 +32,38 @@ console.log(title);
 //console.log(totalCountRollback);
 //console.log(screens);
 
+/*
+const rollbackValue = () => {
+  rollback = inputRange.value;
+  inputRangeValue.textContent = inputRange.value + '%';
+  //console.log(inputRange.value);
+  return rollback;
+  //console.log(rollback + '%');
+};
+
+inputRange.addEventListener('input', rollbackValue);
+
+console.log(rollbackValue());
+*/
+
 const appData = {
   title: '',
   screens: [],
   screenPrice: 0,
   adaptive: true,
-  rollback: 10,
+  rollback: 0,
   servicePricesPercent: 0,
   servicePricesNumber: 0,
   fullPrice: 0,
   servicePercentPrice: 0,
   servicesPercent: {},
   servicesNumber: {},
+
   init: function () {
     appData.addTitle();
     startBtn.addEventListener('click', appData.start);
     buttonPlus.addEventListener('click', appData.addScreenBlock);
+    inputRange.addEventListener('input', appData.getRollback);
   },
   addTitle: function () {
     console.log(title.textContent);
@@ -58,7 +75,8 @@ const appData = {
     appData.addServices();
     appData.addPrices();
     //appData.getServicePercentPrices();
-    //appData.logger();
+    appData.logger();
+    //appData.getRollback();
     appData.showResult();
   },
 
@@ -127,6 +145,24 @@ const appData = {
     }
     appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
   },
+  /*
+  rollbackValue: () => {
+    const getRollback = function (e) {
+      inputRangeValue.textContent = inputRange.value + '%';
+      console.log(inputRange.value);
+
+    };
+
+    inputRange.addEventListener('input', getRollback);
+  },
+   */
+
+  getRollback() {
+    inputRangeValue.textContent = inputRange.value + '%';
+    appData.rollBack = +inputRange.value;
+    //console.log(rollBack);
+    //return rollBack;
+  },
 
   getString(msg, ans = '') {
     let string = '';
@@ -183,10 +219,11 @@ const appData = {
     //  console.log(`${key}: ${appData[key]}`);
     // }
     //}
-    console.log(appData.fullPrice);
-    console.log(appData.servicePercentPrice);
-    console.log(appData.screens);
-    console.log(appData.services);
+    console.log(appData.rollBack);
+    //console.log(appData.fullPrice);
+    //console.log(appData.servicePercentPrice);
+    //console.log(appData.screens);
+    //console.log(appData.services);
   },
 };
 
