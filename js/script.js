@@ -31,20 +31,6 @@ let screens = document.querySelectorAll('.screen');
 //console.log(totalCountRollback);
 //console.log(screens);
 
-/*
-const rollbackValue = () => {
-  rollback = inputRange.value;
-  inputRangeValue.textContent = inputRange.value + '%';
-  //console.log(inputRange.value);
-  return rollback;
-  //console.log(rollback + '%');
-};
-
-inputRange.addEventListener('input', rollbackValue);
-
-console.log(rollbackValue());
-*/
-
 const appData = {
   title: '',
   screens: [],
@@ -93,12 +79,8 @@ const appData = {
   addScreens: function () {
     let screens = document.querySelectorAll('.screen');
     screens.forEach(function (screen, index) {
-      //const countScreens = 0;
       const select = screen.querySelector('select');
       const input = screen.querySelector('input');
-      //console.log(countScreens);
-      //console.log('select', select.value);
-      //console.log(input.value);
       const selectName = select.options[select.selectedIndex].textContent;
       appData.screens.push({
         id: index,
