@@ -45,7 +45,6 @@ const appData = {
   servicesNumber: {},
   init: function () {
     appData.addTitle();
-
     startBtn.addEventListener('click', appData.start);
     buttonPlus.addEventListener('click', appData.addScreenBlock);
   },
@@ -58,16 +57,16 @@ const appData = {
     appData.addScreens();
     appData.addServices();
     appData.addPrices();
-
     //appData.getServicePercentPrices();
-
     //appData.logger();
-    console.log(appData);
+    appData.showResult();
   },
 
-  //isNumber: function (num) {
-  //return !isNaN(parseFloat(num)) && isFinite(num);
-  //},
+  showResult() {
+    total.value = appData.screenPrice;
+    totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber;
+    fullTotalCount.value = appData.fullPrice;
+  },
 
   addScreens: function () {
     let screens = document.querySelectorAll('.screen');
