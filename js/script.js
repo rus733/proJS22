@@ -32,15 +32,35 @@ const appData = {
 
   init: function () {
     appData.addTitle();
-    startBtn.addEventListener('click', appData.start);
+    startBtn.addEventListener('click', appData.checkValue);
     buttonPlus.addEventListener('click', appData.addScreenBlock);
     inputRange.addEventListener('input', appData.getRollback);
   },
 
-  //checkValue: function() {}
   addTitle: function () {
     console.log(title.textContent);
     document.title = title.textContent;
+  },
+
+  isError: false,
+
+  checkValue: function () {
+    let screens = document.querySelectorAll('.screen');
+    let input = document.querySelectorAll('input');
+    let select = document.querySelectorAll('select');
+    const newArray = [...input];
+    //const newArray = [...input, ...select];
+    appData.isError = false;
+    newArray.forEach((input) => {
+      console.log(input);
+      if (input.value.trim() === '') {
+        appData.isError = true;
+      }
+    });
+
+    if (!appData.isError) {
+      appData.start();
+    }
   },
 
   start: function () {
@@ -60,17 +80,17 @@ const appData = {
     totalCountRollback.value = appData.servicePercentPrice;
 
     totalCount.value = appData.totalCountScreens;
-    console.log(appData.totalCountScreens);
+    //console.log(appData.totalCountScreens);
   },
 
   addScreens: function () {
     let screens = document.querySelectorAll('.screen');
-    console.log(screens);
+    //console.log(screens);
     screens.forEach(function (screen, index) {
       const select = screen.querySelector('select');
-      console.log(select);
+      //console.log(select);
       const input = screen.querySelector('input');
-      console.log(input);
+      //console.log(input);
       const selectName = select.options[select.selectedIndex].textContent;
       appData.screens.push({
         id: index,
@@ -134,7 +154,7 @@ const appData = {
     appData.servicePercentPrice = Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
 
     appData.totalCountScreens = appData.screens.reduce((sum, current) => sum + current.count, 0);
-    console.log(appData.totalCountScreens);
+    //console.log(appData.totalCountScreens);
   },
 
   getString(msg, ans = '') {
