@@ -45,15 +45,17 @@ const appData = {
   isError: false,
 
   checkValue: function () {
-    let screens = document.querySelectorAll('.screen');
-    let input = document.querySelectorAll('input');
-    let select = document.querySelectorAll('select');
-    const newArray = [...input];
-    //const newArray = [...input, ...select];
+    const inputs = document.querySelectorAll('.screen input');
+    const selects = document.querySelectorAll('.screen select');
+    const fields = [...inputs, ...selects];
+    const isNumber = function (num) {
+      return !isNaN(parseFloat(num)) && isFinite(num);
+    };
+
     appData.isError = false;
-    newArray.forEach((input) => {
-      console.log(input);
-      if (input.value.trim() === '') {
+
+    fields.forEach((field) => {
+      if (!isNumber(field.value)) {
         appData.isError = true;
       }
     });
@@ -78,20 +80,17 @@ const appData = {
     totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber;
     fullTotalCount.value = appData.fullPrice;
     totalCountRollback.value = appData.servicePercentPrice;
-
     totalCount.value = appData.totalCountScreens;
-    //console.log(appData.totalCountScreens);
   },
 
   addScreens: function () {
     let screens = document.querySelectorAll('.screen');
-    //console.log(screens);
+
     screens.forEach(function (screen, index) {
       const select = screen.querySelector('select');
-      //console.log(select);
       const input = screen.querySelector('input');
-      //console.log(input);
       const selectName = select.options[select.selectedIndex].textContent;
+
       appData.screens.push({
         id: index,
         name: selectName,
@@ -102,9 +101,14 @@ const appData = {
     console.log(appData.screens);
   },
 
+  cloneScreen: screens[0].cloneNode(true),
+
   addScreenBlock: function () {
-    const cloneScreen = screens[0].cloneNode(true);
+    let screens = document.querySelectorAll('.screen');
+    const cloneScreen = appData.cloneScreen.cloneNode(true);
+
     screens[screens.length - 1].after(cloneScreen);
+    screens = document.querySelectorAll('.screen');
   },
 
   addServices: function () {
