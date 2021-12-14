@@ -136,8 +136,6 @@ const appData = {
   getRollback() {
     inputRangeValue.textContent = inputRange.value + '%';
     appData.rollback = +inputRange.value;
-
-    //console.log(appData.rollback);
   },
 
   addPrices: function () {
@@ -158,51 +156,6 @@ const appData = {
     appData.servicePercentPrice = Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
 
     appData.totalCountScreens = appData.screens.reduce((sum, current) => sum + current.count, 0);
-    //console.log(appData.totalCountScreens);
-  },
-
-  getString(msg, ans = '') {
-    let string = '';
-
-    do {
-      string = prompt(msg, ans);
-
-      if (string === null) {
-        return;
-      } else if (string === '') {
-        alert('Вы ввели пустую строку , нужно ввести текст , попробуйте еще раз');
-      } else if (!isNaN(string) && string === null) {
-        alert('Вы ввели число , нужно ввести текст , попробуйте еще раз');
-      }
-    } while (!isNaN(string));
-    return string;
-  },
-
-  getPrice(msg, ans) {
-    let price = 0;
-
-    do {
-      price = +prompt(msg.trim(), ans);
-
-      if (appData.isNumber(price)) {
-      } else if (price !== null) {
-        alert('ВЫ ввели не число, попробуйте еще раз');
-      }
-    } while (!appData.isNumber(price));
-
-    return price;
-  },
-
-  getRollbackMessage: function (price) {
-    if (price >= 30000) {
-      return 'Даем скидку в 10%';
-    } else if (15000 <= price && price < 30000) {
-      return 'Даем скидку в 5%';
-    } else if (0 <= price && price < 15000) {
-      return 'Скидка не предусмотрена';
-    } else {
-      return 'Что то пошло не так';
-    }
   },
 
   logger: () => {
@@ -212,11 +165,6 @@ const appData = {
     //  console.log(`${key}: ${appData[key]}`);
     // }
     //}
-    //console.log(appData.rollback);
-    //console.log(appData.fullPrice);
-    //console.log(appData.servicePercentPrice);
-    //console.log(appData.screens);
-    //console.log(appData.services);
   },
 };
 
