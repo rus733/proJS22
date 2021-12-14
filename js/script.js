@@ -84,7 +84,7 @@ const appData = {
   },
 
   addScreens: function () {
-    let screens = document.querySelectorAll('.screen');
+    const screens = document.querySelectorAll('.screen');
 
     screens.forEach(function (screen, index) {
       const select = screen.querySelector('select');
@@ -104,7 +104,6 @@ const appData = {
   cloneScreen: screens[0].cloneNode(true),
 
   addScreenBlock: function () {
-    let screens = document.querySelectorAll('.screen');
     const cloneScreen = appData.cloneScreen.cloneNode(true);
 
     screens[screens.length - 1].after(cloneScreen);
