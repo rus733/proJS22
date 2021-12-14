@@ -36,6 +36,8 @@ const appData = {
     buttonPlus.addEventListener('click', appData.addScreenBlock);
     inputRange.addEventListener('input', appData.getRollback);
   },
+
+  //checkValue: function() {}
   addTitle: function () {
     console.log(title.textContent);
     document.title = title.textContent;
@@ -63,9 +65,12 @@ const appData = {
 
   addScreens: function () {
     let screens = document.querySelectorAll('.screen');
+    console.log(screens);
     screens.forEach(function (screen, index) {
       const select = screen.querySelector('select');
+      console.log(select);
       const input = screen.querySelector('input');
+      console.log(input);
       const selectName = select.options[select.selectedIndex].textContent;
       appData.screens.push({
         id: index,
