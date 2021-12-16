@@ -18,6 +18,7 @@ const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
 let screens = document.querySelectorAll('.screen');
+const cloneScreen = screens[0].cloneNode(true); // вынесли в переменные
 
 const appData = {
   title: '',
@@ -123,12 +124,10 @@ const appData = {
     //console.log(appData.screens);
   },
 
-  cloneScreen: screens[0].cloneNode(true),
+  //cloneScreen: screens[0].cloneNode(true),
 
   addScreenBlock() {
-    const cloneScreen = appData.cloneScreen.cloneNode(true);
-
-    screens[screens.length - 1].after(cloneScreen);
+    screens[screens.length - 1].after(cloneScreen.cloneNode(true));
     screens = document.querySelectorAll('.screen');
   },
 
@@ -149,7 +148,7 @@ const appData = {
       const input = item.querySelector('input[type=text]');
 
       if (check.checked) {
-        appData.servicesNumber[label.textContent] = +input.value;
+        this.servicesNumber[label.textContent] = +input.value;
       }
     });
   },
