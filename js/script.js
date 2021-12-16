@@ -155,7 +155,7 @@ const appData = {
 
   getRollback() {
     inputRangeValue.textContent = inputRange.value + '%';
-    appData.rollback = +inputRange.value;
+    this.rollback = +inputRange.value;
   },
 
   addPrices() {
