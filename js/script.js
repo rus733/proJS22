@@ -36,7 +36,7 @@ const appData = {
 
   init() {
     this.addTitle();
-    startBtn.addEventListener('click', this.checkValue);
+    startBtn.addEventListener('click', () => this.checkValue()); //this.checkValue.bind(this)
     buttonPlus.addEventListener('click', this.addScreenBlock);
     inputRange.addEventListener('input', this.getRollback);
     //resetBtn.addEventListener('click', appData.reset);
@@ -53,22 +53,23 @@ const appData = {
     const inputs = document.querySelectorAll('.screen input');
     const selects = document.querySelectorAll('.screen select');
     const fields = [...inputs, ...selects];
-    const isNumber = function (num) {
+    const isNumber = (num) => {
       return !isNaN(parseFloat(num)) && isFinite(num);
     };
 
-    appData.isError = false;
+    this.isError = false;
 
     fields.forEach((field) => {
       if (!isNumber(field.value)) {
         //console.log(this);
-        appData.isError = true;
+        this.isError = true;
       }
     });
 
-    if (!appData.isError) {
-      //console.log(this);
-      appData.start();
+    if (!this.isError) {
+      console.log(this);
+
+      this.start();
     }
   },
 
@@ -159,23 +160,23 @@ const appData = {
   },
 
   addPrices() {
-    for (let screen of appData.screens) {
-      appData.screenPrice += +screen.price;
+    for (let screen of this.screens) {
+      this.screenPrice += +screen.price;
     }
 
-    for (let key in appData.servicesNumber) {
-      appData.servicePricesNumber += appData.servicesNumber[key];
+    for (let key in this.servicesNumber) {
+      this.servicePricesNumber += this.servicesNumber[key];
     }
 
-    for (let key in appData.servicesPercent) {
-      appData.servicePricesPercent += (appData.screenPrice * appData.servicesPercent[key]) / 100;
+    for (let key in this.servicesPercent) {
+      this.servicePricesPercent += (this.screenPrice * this.servicesPercent[key]) / 100;
     }
 
-    appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
+    this.fullPrice = +this.screenPrice + this.servicePricesPercent + this.servicePricesNumber;
 
-    appData.servicePercentPrice = Math.ceil(appData.fullPrice * (1 - appData.rollback / 100));
+    this.servicePercentPrice = Math.ceil(this.fullPrice * (1 - this.rollback / 100));
 
-    appData.totalCountScreens = appData.screens.reduce((sum, current) => sum + current.count, 0);
+    this.totalCountScreens = this.screens.reduce((sum, current) => sum + current.count, 0);
   },
 
   logger() {
