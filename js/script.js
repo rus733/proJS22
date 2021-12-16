@@ -9,8 +9,8 @@ const inputRange = document.querySelector('.rollback input');
 const inputRangeValue = document.querySelector('.rollback .range-value ');
 const startBtn = document.getElementsByClassName('handler_btn')[0];
 const resetBtn = document.getElementsByClassName('handler_btn')[1];
-console.dir(resetBtn.style.display);
-console.log(startBtn);
+//console.dir(resetBtn.style.display);
+//console.log(startBtn);
 const total = document.getElementsByClassName('total-input')[0];
 const totalCount = document.getElementsByClassName('total-input')[1];
 const totalCountOther = document.getElementsByClassName('total-input')[2];
@@ -33,22 +33,22 @@ const appData = {
   servicesNumber: {},
   totalCountScreens: 0,
 
-  init: () => {
-    appData.addTitle();
-    startBtn.addEventListener('click', appData.checkValue);
-    buttonPlus.addEventListener('click', appData.addScreenBlock);
-    inputRange.addEventListener('input', appData.getRollback);
-    resetBtn.addEventListener('click', appData.reset);
+  init() {
+    this.addTitle();
+    startBtn.addEventListener('click', this.checkValue);
+    buttonPlus.addEventListener('click', this.addScreenBlock);
+    inputRange.addEventListener('input', this.getRollback);
+    //resetBtn.addEventListener('click', appData.reset);
   },
 
-  addTitle: () => {
+  addTitle() {
     console.log(title.textContent);
     document.title = title.textContent;
   },
 
   isError: false,
 
-  checkValue: () => {
+  checkValue() {
     const inputs = document.querySelectorAll('.screen input');
     const selects = document.querySelectorAll('.screen select');
     const fields = [...inputs, ...selects];
@@ -71,36 +71,36 @@ const appData = {
     }
   },
 
-  start: () => {
-    appData.addScreens();
-    appData.addServices();
-    appData.addPrices();
+  start() {
+    this.addScreens();
+    this.addServices();
+    this.addPrices();
     //appData.getServicePercentPrices();
-    appData.logger();
-    appData.getRollback();
-    appData.showResult();
-    appData.disableInput();
+    this.logger();
+    this.getRollback();
+    this.showResult();
+    this.disableInput();
   },
 
-  reset: () => {},
+  reset() {}, //метод сброса
 
-  showResult: () => {
+  showResult() {
     //console.log(this);
-    total.value = appData.screenPrice;
-    totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber;
-    fullTotalCount.value = appData.fullPrice;
-    totalCountRollback.value = appData.servicePercentPrice;
-    totalCount.value = appData.totalCountScreens;
+    total.value = this.screenPrice;
+    totalCountOther.value = this.servicePricesPercent + this.servicePricesNumber;
+    fullTotalCount.value = this.fullPrice;
+    totalCountRollback.value = this.servicePercentPrice;
+    totalCount.value = this.totalCountScreens;
   },
 
-  disableInput: () => {
+  disableInput() {
     // начал только
-    alert('ghbdtn конец');
+
     resetBtn.style.display = 'flex';
     startBtn.style.display = 'none';
   },
 
-  addScreens: () => {
+  addScreens() {
     const screens = document.querySelectorAll('.screen');
     screens.forEach((screen, index) => {
       // перевел в стрелочную так как ниже контекст был не определен
@@ -125,14 +125,14 @@ const appData = {
 
   cloneScreen: screens[0].cloneNode(true),
 
-  addScreenBlock: () => {
+  addScreenBlock() {
     const cloneScreen = appData.cloneScreen.cloneNode(true);
 
     screens[screens.length - 1].after(cloneScreen);
     screens = document.querySelectorAll('.screen');
   },
 
-  addServices: () => {
+  addServices() {
     otherItemsPercent.forEach((item) => {
       const check = item.querySelector('input[type=checkbox]');
       const label = item.querySelector('label');
@@ -154,12 +154,12 @@ const appData = {
     });
   },
 
-  getRollback: () => {
+  getRollback() {
     inputRangeValue.textContent = inputRange.value + '%';
     appData.rollback = +inputRange.value;
   },
 
-  addPrices: () => {
+  addPrices() {
     for (let screen of appData.screens) {
       appData.screenPrice += +screen.price;
     }
@@ -179,7 +179,7 @@ const appData = {
     appData.totalCountScreens = appData.screens.reduce((sum, current) => sum + current.count, 0);
   },
 
-  logger: () => {
+  logger() {
     //вывести в консоль свойства и  методы объекта appData с помощью цикла for in
     //for (const key in appData) {
     // if (typeof appData[key] !== "function") {
