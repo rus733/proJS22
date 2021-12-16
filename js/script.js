@@ -39,7 +39,7 @@ const appData = {
     startBtn.addEventListener('click', () => this.checkValue()); //this.checkValue.bind(this)
     buttonPlus.addEventListener('click', this.addScreenBlock);
     inputRange.addEventListener('input', this.getRollback);
-    //resetBtn.addEventListener('click', appData.reset);
+    resetBtn.addEventListener('click', this.reset);
   },
 
   addTitle() {
@@ -61,14 +61,11 @@ const appData = {
 
     fields.forEach((field) => {
       if (!isNumber(field.value)) {
-        //console.log(this);
         this.isError = true;
       }
     });
 
     if (!this.isError) {
-      console.log(this);
-
       this.start();
     }
   },
@@ -87,7 +84,6 @@ const appData = {
   reset() {}, //метод сброса
 
   showResult() {
-    //console.log(this);
     total.value = this.screenPrice;
     totalCountOther.value = this.servicePricesPercent + this.servicePricesNumber;
     fullTotalCount.value = this.fullPrice;
@@ -96,7 +92,13 @@ const appData = {
   },
 
   disableInput() {
-    // начал только
+    const inputs = document.querySelectorAll('.screen input');
+    const selects = document.querySelectorAll('.screen select');
+    const fields = [...inputs, ...selects];
+
+    fields.forEach((field) => {
+      field.disabled = true;
+    });
 
     resetBtn.style.display = 'flex';
     startBtn.style.display = 'none';
@@ -105,16 +107,10 @@ const appData = {
   addScreens() {
     const screens = document.querySelectorAll('.screen');
     screens.forEach((screen, index) => {
-      // перевел в стрелочную так как ниже контекст был не определен
       const select = screen.querySelector('select');
       const input = screen.querySelector('input');
-      console.log(input);
-      console.log(select);
-      const selectName = select.options[select.selectedIndex].textContent;
 
-      //console.log(this);
-      //let funcUser = func.bind(user);
-      //.bind(appData)
+      const selectName = select.options[select.selectedIndex].textContent;
       this.screens.push({
         id: index,
         name: selectName,
@@ -122,10 +118,7 @@ const appData = {
         count: +input.value,
       });
     });
-    //console.log(appData.screens);
   },
-
-  //cloneScreen: screens[0].cloneNode(true),
 
   addScreenBlock() {
     screens[screens.length - 1].after(cloneScreen.cloneNode(true));
