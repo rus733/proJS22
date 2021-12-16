@@ -113,7 +113,7 @@ const appData = {
       //console.log(this);
       //let funcUser = func.bind(user);
       //.bind(appData)
-      appData.screens.push({
+      this.screens.push({
         id: index,
         name: selectName,
         price: +select.value * +input.value,
