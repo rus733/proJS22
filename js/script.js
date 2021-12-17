@@ -55,9 +55,7 @@ const appData = {
     const inputs = document.querySelectorAll('.screen input');
     const selects = document.querySelectorAll('.screen select');
     const fields = [...inputs, ...selects];
-    const isNumber = (num) => {
-      return !isNaN(parseFloat(num)) && isFinite(num);
-    };
+    const isNumber = (num) => !isNaN(parseFloat(num)) && isFinite(num);
 
     this.isError = false;
 
