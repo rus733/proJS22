@@ -1,4 +1,4 @@
-let title, screens, screeenPrice, rollback, fullPrice, adaptive; // в столбик форматер не позволяет
+const title, screens, screeenPrice, rollback, fullPrice, adaptive;
 
-alert("Привет всем!!!");
-console.log("Привет , это консоль из lesson01!");
+alert('Привет всем!!!');
+console.log('Привет , это консоль из lesson01!');
